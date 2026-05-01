@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Anam</title>
+  <meta name="description" content="A special birthday surprise for Anam.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- Audio: Add your actual mp3 file to the assets folder or replace src -->
+  <audio id="bgMusic" src="assets/lofi_love_me_like_u_do.mp3" loop></audio>
+
+  <div id="app">
+    <!-- State 1: Intro -->
+    <section id="state1" class="state active" style="background-image: url('assets/fireworks_bg_1777609055445.png');">
+      <div class="overlay"></div>
+      <div class="content">
+        <h1 class="glow-text">Happy Birthday Baby</h1>
+        <button id="startBtn" class="premium-btn">Let me take u on a ride</button>
+      </div>
+    </section>
+
+    <!-- State 2: Cake -->
+    <section id="state2" class="state">
+      <!-- Particles Container -->
+      <div id="particles"></div>
+      <div class="content cake-container">
+        <h2 class="prompt-text">Tap the candle to blow it off</h2>
+        <div class="cake-wrapper">
+          <img src="assets/cake_no_flame_1777609005538.png" alt="Birthday Cake" class="cake-img">
+          <!-- The clickable flame -->
+          <div id="flame" class="flame"></div>
+          <div id="smoke" class="smoke hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- State 3: Surprise & Letter -->
+    <section id="state3" class="state">
+      <div class="content surprise-container">
+        <img src="assets/flowers_bouquet_1777609021778.png" alt="Bouquet" class="bouquet" id="bouquet">
+        <div class="envelope-wrapper" id="envelopeWrapper">
+          <img src="assets/envelope_1777609036893.png" alt="Envelope" class="envelope-img">
+          <div class="letter-content hidden" id="letterContent">
+            <p>"I know this is not appropriate, I had to be right next to u at least for this moment. I am so sorry that I couldn't make it but, I promise someday we will be celebrating ur birthday with hands in hand. Wishing you a very HAPPY BIRTHDAY ANAM. May this year bring all the joy u deserve along with the happiness of mine. LOVE U :)"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
