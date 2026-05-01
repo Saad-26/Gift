@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const smoke = document.getElementById('smoke');
   
   const bouquet = document.getElementById('bouquet');
-  const envelopeWrapper = document.getElementById('envelopeWrapper');
-  const letterContent = document.getElementById('letterContent');
+  const bouquetText = document.getElementById('bouquetText');
+  const greetingCard = document.getElementById('greetingCard');
   
   // Create Particles for State 2
   createParticles();
@@ -49,18 +49,22 @@ document.addEventListener("DOMContentLoaded", () => {
         state3.classList.add('active');
         // Trigger State 3 animations
         bouquet.classList.add('animate-in');
+        bouquetText.classList.remove('hidden');
+        setTimeout(() => bouquetText.classList.add('visible'), 500);
+
+        // Card flies in after 4 seconds
         setTimeout(() => {
-          envelopeWrapper.classList.add('animate-in');
-        }, 1000);
+          greetingCard.classList.remove('hidden');
+          setTimeout(() => greetingCard.classList.add('fly-in'), 50);
+        }, 4000);
       }, 1500);
     }, 2000);
   });
 
-  // State 3: Open Letter
-  envelopeWrapper.addEventListener('click', () => {
-    if (!envelopeWrapper.classList.contains('opened')) {
-      envelopeWrapper.classList.add('opened');
-      letterContent.classList.remove('hidden');
+  // State 3: Open Greeting Card
+  greetingCard.addEventListener('click', () => {
+    if (!greetingCard.classList.contains('opened')) {
+      greetingCard.classList.add('opened');
     }
   });
 
@@ -94,23 +98,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createParticles() {
     const container = document.getElementById('particles');
-    for (let i = 0; i < 60; i++) {
-      let particle = document.createElement('div');
-      particle.classList.add('particle');
+    const colors = ['#ff1493', '#00bcd4', '#ffeb3b', '#4caf50', '#ff5722', '#9c27b0'];
+    for (let i = 0; i < 35; i++) {
+      let balloon = document.createElement('div');
+      balloon.classList.add('balloon');
       
-      // Random properties
-      let size = Math.random() * 4 + 2; // 2px to 6px
-      let left = Math.random() * 100; // 0% to 100%
-      let delay = Math.random() * 5; // 0s to 5s
-      let duration = Math.random() * 10 + 8; // 8s to 18s
+      let left = Math.random() * 100;
+      let delay = Math.random() * 5;
+      let duration = Math.random() * 8 + 6;
+      let color = colors[Math.floor(Math.random() * colors.length)];
       
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
-      particle.style.left = left + '%';
-      particle.style.animationDelay = delay + 's';
-      particle.style.animationDuration = duration + 's';
+      balloon.style.left = left + '%';
+      balloon.style.animationDelay = delay + 's';
+      balloon.style.animationDuration = duration + 's';
+      balloon.style.setProperty('--balloon-color', color);
       
-      container.appendChild(particle);
+      container.appendChild(balloon);
     }
   }
 });
